@@ -1,0 +1,8 @@
+api:
+  listen: '127.0.0.1:1984'
+rtsp:
+  listen: ''
+webrtc:
+  listen: '127.0.0.1:8555'
+streams:
+  tapo-c500: rtsp://${CAMERA_USER}:${CAMERA_PASSWORD}@${CAMERA_IP}:554/stream1

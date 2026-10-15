@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tapo Viewer</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true"><span></span></div>
+      <div class="brand-copy"><strong>Tapo Viewer</strong><span>Visualização local</span></div>
+      <div class="topbar-note">Neste computador</div>
+    </header>
+
+    <main class="workspace">
+      <section class="viewer" aria-labelledby="viewer-title">
+        <div class="viewer-heading">
+          <div>
+            <p class="section-label">Câmera 01</p>
+            <h1 id="viewer-title">Tapo C500</h1>
+            <p class="viewer-subtitle">Veja o que acontece em casa, em tempo real.</p>
+          </div>
+          <div class="status" id="status" data-state="disconnected" role="status" aria-live="polite">
+            <span class="status-dot"></span><span id="status-text">Desconectada</span>
+          </div>
+        </div>
+
+        <div class="stage" id="stage">
+          <div class="stage-placeholder" id="placeholder">
+            <div class="placeholder-lens" aria-hidden="true"><span></span></div>
+            <strong>A imagem aparece aqui</strong>
+            <p>Informe os dados da câmera para iniciar a transmissão.</p>
+          </div>
+          <iframe id="camera-frame" title="Vídeo ao vivo da Tapo C500" allow="autoplay; fullscreen" allowfullscreen hidden></iframe>
+          <div class="stage-corner" aria-hidden="true"></div>
+        </div>
+
+        <div class="viewer-foot">
+          <span>Transmissão pela rede da sua casa</span>
+          <button class="text-button" id="retry-button" type="button" hidden>Tentar novamente</button>
+        </div>
+      </section>
+
+      <aside class="settings" aria-labelledby="settings-title">
+        <div class="settings-head">
+          <p class="section-label">Configuração</p>
+          <h2 id="settings-title">Conectar câmera</h2>
+          <p>Use o IP da câmera e a Conta da Câmera criada no app Tapo.</p>
+        </div>
+        <form id="camera-form" autocomplete="off">
+          <label for="camera-ip">Endereço IP</label>
+          <input id="camera-ip" name="ip" type="text" inputmode="decimal" placeholder="192.168.1.100" required spellcheck="false">
+
+          <label for="camera-user">Usuário da câmera</label>
+          <input id="camera-user" name="username" type="text" placeholder="Seu usuário" required autocomplete="off" spellcheck="false">
+
+          <label for="camera-password">Senha da câmera</label>
+          <input id="camera-password" name="password" type="password" placeholder="Sua senha" required autocomplete="off">
+
+          <p class="form-hint">Esses dados são usados apenas nesta sessão.</p>
+          <button class="primary-button" id="connect-button" type="submit">Iniciar transmissão</button>
+          <button class="secondary-button" id="disconnect-button" type="button" hidden>Desconectar</button>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </form>
+
+        <div class="settings-help">
+          <div class="help-icon" aria-hidden="true">?</div>
+          <div><strong>Onde encontro esses dados?</strong><p>No app Tapo: configurações da câmera → Informações do dispositivo (IP) e Configurações avançadas → Conta da Câmera.</p></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
